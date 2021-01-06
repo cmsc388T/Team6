@@ -12,8 +12,6 @@ public class TestMapEatCookie extends TestCase {
 		NoFrame frame = new NoFrame();
 		Map map = frame.getMap();
 		
-		System.out.println("Cookies: " + map.getCookies());
-		
 		int consumedCookies = 0;
 		for (int x = 0; x < MAX_X; x++) {
 			for (int y = 0; y < MAX_Y; y++) {
@@ -21,8 +19,6 @@ public class TestMapEatCookie extends TestCase {
 					consumedCookies++;
 			}
 		}
-		
-		System.out.println("Cookies: " + consumedCookies);
 		
 		assertTrue(consumedCookies == MAX_COOKIES);
 	}
