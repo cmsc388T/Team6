@@ -42,9 +42,6 @@ public class Map{
 		components.put(name, comp);
 		if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
 		field.get(loc).add(type);
-		
-		if (name.startsWith("tok_x"))
-			cookies++;
 	}
 
 	public int getCookies() {
@@ -75,7 +72,7 @@ public class Map{
 		//update locations, components, field, and cookies
 		//the id for a cookie at (10, 1) is tok_x10_y1
 		
-		if (locations.containsKey(name) && components.containsKey(name) && cookies > 0) {
+		if (locations.containsKey(name) && components.containsKey(name)) {
 			Location cookieLoc = locations.get(name);
 			
 			if (field.get(cookieLoc).contains(Type.COOKIE)) {
@@ -83,8 +80,8 @@ public class Map{
 				
 				locations.remove(cookieLoc);
 				components.remove(cookie);
-				cookies--;
 				field.get(cookieLoc).remove(Type.COOKIE);
+				cookies++;
 				
 				return cookie;
 			}
