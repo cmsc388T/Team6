@@ -42,6 +42,9 @@ public class Map{
 		components.put(name, comp);
 		if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
 		field.get(loc).add(type);
+		
+		if (name.startsWith("tok_x"))
+			cookies++;
 	}
 
 	public int getCookies() {
