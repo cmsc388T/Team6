@@ -23,7 +23,7 @@ public class PacMan{
 	public boolean move() {
 		ArrayList<Location> moves = get_valid_moves();
 		// Check for at least a single valid move
-		if(!moves.isEmpty()) {
+		if(moves != null && !moves.isEmpty()) {
 			// Pick the first one, easily changeable
 			myLoc = moves.get(0);
 			return true;
