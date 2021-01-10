@@ -25,7 +25,8 @@ public class PacMan{
 	public boolean is_ghost_in_range() { 
 		for (int x = myLoc.x - 1; row <= myLoc.x + 1; x++) {
 			for (int y = myLoc.y - 1; col <= myLoc.y + 1; y++) {
-				if (myMap.getLoc(new Location(x, y)).contains(Map.Type.GHOST)) {
+				HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
+				if (loc != null && loc.contains(Map.Type.GHOST)) {
 					return true;
 				}
 			}
