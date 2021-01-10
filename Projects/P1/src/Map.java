@@ -65,6 +65,17 @@ public class Map{
 
 	public boolean attack(String Name) {
 		//update gameOver
+		Location pacLoc = locations.get("pacman");
+		Location ghostLoc = locations.get(Name);
+		
+		if (pacLoc != null && ghostLoc != null) {
+			if (Math.abs(pacLoc.x - ghostLoc.x) <= 1
+			&& Math.abs(pacLoc.y - ghostLoc.y) <= 1) {
+				gameOver = true;
+				return true;
+			}
+		}
+		
 		return false;
 	}
 	
