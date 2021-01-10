@@ -5,7 +5,6 @@ import java.io.*;
 public class TestPacManInRange extends TestCase {
 
 	public void testPacManInRange() throws FileNotFoundException{
-		return null;
 		NoFrame frame = new NoFrame();
 		
 		PacMan pacman = frame.addPacMan(new Location (0, 0));
