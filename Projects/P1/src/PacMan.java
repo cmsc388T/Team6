@@ -2,8 +2,6 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 
-import com.sun.jdi.Location;
-
 public class PacMan{
 	String myName;
 	Location myLoc;
@@ -24,8 +22,8 @@ public class PacMan{
 		ArrayList<Location> moves = get_valid_moves();
 		// Check for at least a single valid move
 		if(moves != null && !moves.isEmpty()) {
-			// Pick the first one, easily changeable
-			myLoc = moves.get(0);
+			// Pick random for fun
+			myLoc = moves.get((int)(Math.random() * moves.size()));
 			return true;
 		} else {
 			// Pacman cannot move!
