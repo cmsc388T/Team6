@@ -1,7 +1,5 @@
 import java.util.HashSet;
 
-import com.sun.jdi.Location;
-
 import java.util.ArrayList;
 
 public class Ghost{
