@@ -15,7 +15,41 @@ public class PacMan{
 	}
 
 	public ArrayList<Location> get_valid_moves() {
-		return null;	
+
+		ArrayList<Location> newLoc = new ArrayList<Location>();
+		
+		//cartesian
+		if(!this.myMap.getLoc(this.myLoc.shift(1,0)).contains(Map.Type.WALL)){
+			newLoc.add(this.myLoc.shift(1,0));
+		}
+		if(!this.myMap.getLoc(this.myLoc.shift(-1,0)).contains(Map.Type.WALL)){
+			newLoc.add(this.myLoc.shift(-1,0));
+		}
+		if(!this.myMap.getLoc(this.myLoc.shift(0,1)).contains(Map.Type.WALL)){
+			newLoc.add(this.myLoc.shift(0,1));
+		}
+		if(!this.myMap.getLoc(this.myLoc.shift(0,-1)).contains(Map.Type.WALL)){
+			newLoc.add(this.myLoc.shift(0,-1));
+		}
+
+		//diagonal
+		if(!this.myMap.getLoc(this.myLoc.shift(1,1)).contains(Map.Type.WALL)){
+			newLoc.add(this.myLoc.shift(1,1));
+		}
+		if(!this.myMap.getLoc(this.myLoc.shift(-1,-1)).contains(Map.Type.WALL)){
+			newLoc.add(this.myLoc.shift(-1,-1));
+		}
+		if(!this.myMap.getLoc(this.myLoc.shift(-1,1)).contains(Map.Type.WALL)){
+			newLoc.add(this.myLoc.shift(-1,1));
+		}
+		if(!this.myMap.getLoc(this.myLoc.shift(1,-1)).contains(Map.Type.WALL)){
+			newLoc.add(this.myLoc.shift(1,-1));
+		}
+
+
+
+		return newLoc;	
+
 	}
 
 	public boolean move() {
