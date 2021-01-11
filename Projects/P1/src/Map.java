@@ -69,17 +69,13 @@ public class Map{
 		Location ghostLoc = locations.get(Name);
 		
 		if (pacLoc != null && ghostLoc != null) {
-			if ((Math.abs(pacLoc.x - ghostLoc.x) == 1)
-			!= (Math.abs(pacLoc.y - ghostLoc.y) == 1)) { // Vertical or horizontal differnce only
+			if (Math.abs(pacLoc.x - ghostLoc.x) + Math.abs(pacLoc.y - ghostLoc.y) <= 1) {
 				gameOver = true;
-			} else if ((pacLoc.x == ghostLoc.x) && (pacLoc.y == ghostLoc.y)) { // Occupy same loc
-				gameOver = true;
-			} else {
-				return false;
+				return true;
 			}
 		}
 		
-		return true;
+		return false;
 	}
 	
 	public JComponent eatCookie(String name) {
