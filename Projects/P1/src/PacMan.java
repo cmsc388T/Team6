@@ -6,7 +6,7 @@ public class PacMan{
 	String myName;
 	Location myLoc;
 	Map myMap;
-	Location shift; 
+	Location shift;
 
 	public PacMan(String name, Location loc, Map map) {
 		this.myLoc = loc;
@@ -15,7 +15,7 @@ public class PacMan{
 	}
 
 	public ArrayList<Location> get_valid_moves() {
-
+    
 		ArrayList<Location> newLoc = new ArrayList<Location>();
 		
 		//cartesian
@@ -46,14 +46,20 @@ public class PacMan{
 			newLoc.add(this.myLoc.shift(1,-1));
 		}
 
-
-
-		return newLoc;	
-
+		return newLoc;
 	}
 
 	public boolean move() {
-		return false;
+		ArrayList<Location> moves = get_valid_moves();
+		// Check for at least a single valid move
+		if(moves != null && !moves.isEmpty()) {
+			// Pick random for fun
+			myLoc = moves.get((int)(Math.random() * moves.size()));
+			return true;
+		} else {
+			// Pacman cannot move!
+			return false;
+		}
 	}
 
 	public boolean is_ghost_in_range() {
@@ -65,11 +71,11 @@ public class PacMan{
 				}
 			}
 		}
-		
+    
 		return false;
 	}
 
-	public JComponent consume() { 
+	public JComponent consume() {
  		return null;
 	}
 }
