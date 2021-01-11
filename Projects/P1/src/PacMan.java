@@ -23,12 +23,19 @@ public class PacMan{
 	}
 
 	public boolean is_ghost_in_range() { 
-		for (int x = myLoc.x - 1; row <= myLoc.x + 1; x++) {
-			for (int y = myLoc.y - 1; col <= myLoc.y + 1; y++) {
-				HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
-				if (loc != null && loc.contains(Map.Type.GHOST)) {
-					return true;
-				}
+		// Vertical
+		for (int x = myLoc.x, y = myLoc.y - 1; y <= myLoc.y + 1; y++) {
+			HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
+			if (loc != null && loc.contains(Map.Type.GHOST)) {
+				return true;
+			}
+		}
+		
+		// Horizontal
+		for (int y = myLoc.y, x = myLoc.x - 1; x <= myLoc.x + 1; x++) {
+			HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
+			if (loc != null && loc.contains(Map.Type.GHOST)) {
+				return true;
 			}
 		}
 		
