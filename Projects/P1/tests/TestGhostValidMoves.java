@@ -13,9 +13,6 @@ public class TestGhostValidMoves extends TestCase {
 		Ghost ghost = frame.addGhost(new Location(9, 11), "name", Color.red); //Creates a red ghost named "name" at location x,y
 		PacMan pacman = frame.addPacMan(new Location(2, 2)); //Creates PacMan at location x, y
 
-		//Start The Game
-		frame.startGame();
-
 
 		ArrayList<Location> test = new ArrayList<Location>();
 		test.add(new Location(10, 11));
