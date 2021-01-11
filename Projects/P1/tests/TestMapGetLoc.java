@@ -15,9 +15,6 @@ public class TestMapGetLoc extends TestCase{
 		Ghost ghost = frame.addGhost(new Location(9, 12), "name", Color.red); //Creates a red ghost named "name" at location x,y
 		PacMan pacman = frame.addPacMan(new Location(9, 11)); //Creates PacMan at location x, y
 
-		//Start The Game
-		frame.startGame();
-
 		HashSet<Map.Type> check = new HashSet<Map.Type>();
 		check.add(Map.Type.PACMAN);
 
