@@ -12,8 +12,8 @@ public class TestMapAttack {
 		assertFalse(frame.getMap().attack("clyde"));
 		
 		// Can attack
-		frame.getMap().add("blinky", new Location(1, 1),
-		new GhostComponent(1, 1, 20), Map.Type.GHOST);
+		frame.getMap().add("blinky", new Location(0, 1),
+		new GhostComponent(0, 1, 20), Map.Type.GHOST);
 		assertTrue(frame.getMap().attack("blinky"));
 	}
 }
