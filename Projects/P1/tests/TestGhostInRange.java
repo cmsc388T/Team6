@@ -25,6 +25,13 @@ public class TestGhostInRange extends TestCase {
 		ghost.myLoc.x = 5;
 		ghost.myLox.y = 6;
 		assertTrue(ghost.is_pacman_in_range());
+		
+		// Diagonal
+		pacman.myLoc.x = 6;
+		pacman.myLoc.y = 6;
+		ghost.myLoc.x = 5;
+		ghost.myLox.y = 5;
+		assertTrue(ghost.is_pacman_in_range());
 	}
 }
 
