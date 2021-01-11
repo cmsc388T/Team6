@@ -23,18 +23,18 @@ public class Ghost{
 	public boolean is_pacman_in_range() { 
 		// Vertical
 		for (int x = myLoc.x, y = myLoc.y - 1; y <= myLoc.y + 1; y++) {
-				HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
-				if (loc != null && loc.contains(Map.Type.PACMAN)) {
-					return true;
-				}
+			HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
+			if (loc != null && loc.contains(Map.Type.PACMAN)) {
+				return true;
+			}
 		}
 		
 		// Horizontal
 		for (int y = myLoc.y, x = myLoc.x - 1; x <= myLoc.x + 1; x++) {
-				HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
-				if (loc != null && loc.contains(Map.Type.PACMAN)) {
-					return true;
-				}
+			HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
+			if (loc != null && loc.contains(Map.Type.PACMAN)) {
+				return true;
+			}
 		}
 		
 		return false;
