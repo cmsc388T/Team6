@@ -66,9 +66,11 @@ public class Map{
 				if(types != null) {
 					types.remove(type);
 				}
+				locations.remove(name);
 				// move the component
 				component.setLocation(loc.x, loc.y);
 				// add type to new location
+				locations.put(name, loc);
 				types = field.get(loc);
 				if(types != null) {
 					types.add(type);
