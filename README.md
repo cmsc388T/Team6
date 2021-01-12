@@ -9,6 +9,7 @@ This is the CMSC388T Winter 21 - Team 6 Pacman project.
 
 ## Image of our Pacman Game
 
+![Pacman](/pacman-game.png)
 
 ## Usage
 To run the game, simply run
