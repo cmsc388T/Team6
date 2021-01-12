@@ -5,7 +5,7 @@ This is the CMSC388T Winter 21 - Team 6 Pacman project.
 - Alejandro Rigau
 - Zachary Dodge
 - Jeffrey Jiang
-- Name
+- Samuel Markey
 
 ## Image of our Pacman Game
 
@@ -44,6 +44,12 @@ java - runs the StartMenu java program
 
 - **Description of tests**: To test this, Pacman and a ghost are added to the game at various locations. Some placements involve the Pacman being in attack range of the ghost, and some involve Pacman not being in range of the ghost.
 
+### move()
+
+- **Description of implementation**: This method uses get_valid_moves to find random moves that Pacman can make, and then randomly selects on of these moves and changes Pacman's position to a new location while returning true. If Pacman can make no moves, this method will return false and not move Pacman.
+
+- **Description of tests**: For this test, I set Pacman to a location and recorded what moves were available. I moved Pacman and check to ensure that it either moved and had a different list of available moves, or did not move and had the same available moves(which should be an empty list).
+
 ## Part 1b - Ghost Class
 
 ### get_valid_moves()
@@ -64,6 +70,12 @@ java - runs the StartMenu java program
 
 - **Description of tests**: To test this, Pacman and a ghost are added to the game at various locations. Some placements involve the Pacman being in attack range of the ghost, and some involve Pacman not being in range of the ghost.
 
+### move
+
+- **Description of implementation**: This method uses get_valid_moves to find random moves that the Ghost can make, and then randomly selects on of these moves and changes the Ghost's position to a new location while returning true. If the Ghost can make no moves, this method will return false and not move the Ghost.
+
+- **Description of tests**: For this test, I set a Ghost to a location and recorded what moves were available. I moved the Ghost and check to ensure that it either moved and had a different list of available moves, or did not move and had the same available moves(which should be an empty list).
+
 ## Map Class
 
 ### getLoc(Location loc)
@@ -83,3 +95,9 @@ java - runs the StartMenu java program
 - **Description of implementation**: This method sets the field gameOver to true and returns true if the ghost specified by the argument successfully attacks Pacman, and returns false otherwise. The ghost successfully attacks Pacman if Pacman is in attack range of the ghost.
 
 - **Description of tests**: To test this, Pacman and a ghost are added to the game at various locations. Some placements involve the Pacman being in attack range of the ghost, and some involve Pacman not being in range of the ghost.
+
+### move(String name, Location loc, Type type)
+
+- **Description of implementation**: This method is responsible for moving components all over the board. It takes a name, location, and type. It will move the component with that name to the specified location and add that type to the field.
+
+- **Description of tests**: To test this I simply added Pacman into the frame, moved it to a desired location then ensured that it no longer existed in the old location as well as existed in the new location.
