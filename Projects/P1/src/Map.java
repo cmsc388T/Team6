@@ -62,11 +62,17 @@ public class Map{
 			Location location = locations.get(name);
 			if(component != null && location != null && loc != null && type != null) {
 				// remove type from old location
-				field.get(location).remove(type);
+				HashSet<Type> types = field.get(location);
+				if(types != null) {
+					types.remove(type);
+				}
 				// move the component
 				component.setLocation(loc.x, loc.y);
 				// add type to new location
-				field.get(loc).add(type);
+				types = field.get(loc);
+				if(types != null) {
+					types.add(type);
+				}
 				return true;
 			}
 		}
