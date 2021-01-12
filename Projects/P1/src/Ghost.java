@@ -59,7 +59,16 @@ public class Ghost{
 		}
 	}
 
-	public boolean is_pacman_in_range() { 
+	public boolean is_pacman_in_range() {
+		for (int x = myLoc.x - 1; x <= myLoc.x + 1; x++) {
+			for (int y = myLoc.y - 1; y <= myLoc.y + 1; y++) {
+				HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
+				if (loc != null && loc.contains(Map.Type.PACMAN)) {
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 
