@@ -57,20 +57,29 @@ public class Map{
 		//use the setLocation method for the component to move it to the new location
 
 		// find associated component
-		JComponent component = components.get(name);
-		Location location = locations.get(name);
-		if(component != null && location != null) {
-			// remove type from old location
-			field.get(locations.get(name)).remove(type);
-			// move the component
-			component.setLocation(loc.x, loc.y);
-			// add type to new location
-			field.get(loc).add(type);
-			return true;
-		} else {
-			// no component with that name
-			return false;
+		if(name != null) {
+			JComponent component = components.get(name);
+			Location location = locations.get(name);
+			if(component != null && location != null && loc != null && type != null) {
+				// remove type from old location
+				HashSet<Type> types = field.get(location);
+				if(types != null) {
+					types.remove(type);
+				}
+				locations.remove(name);
+				// move the component
+				component.setLocation(loc.x, loc.y);
+				// add type to new location
+				locations.put(name, loc);
+				types = field.get(loc);
+				if(types != null) {
+					types.add(type);
+				}
+				return true;
+			}
 		}
+			// something is wrong
+			return false;
 	}
 	
 	public HashSet<Type> getLoc(Location loc) {
