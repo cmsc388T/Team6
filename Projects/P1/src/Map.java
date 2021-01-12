@@ -55,22 +55,76 @@ public class Map{
 	public boolean move(String name, Location loc, Type type) {
 		//update locations, components, and field
 		//use the setLocation method for the component to move it to the new location
-		return false;
+
+		// find associated component
+		if(name != null) {
+			JComponent component = components.get(name);
+			Location location = locations.get(name);
+			if(component != null && location != null && loc != null && type != null) {
+				// remove type from old location
+				HashSet<Type> types = field.get(location);
+				if(types != null) {
+					types.remove(type);
+				}
+				locations.remove(name);
+				// move the component
+				component.setLocation(loc.x, loc.y);
+				// add type to new location
+				locations.put(name, loc);
+				types = field.get(loc);
+				if(types != null) {
+					types.add(type);
+				}
+				return true;
+			}
+		}
+			// something is wrong
+			return false;
 	}
 	
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
-		return null;
+		if (field.get(loc) == null) {
+			return emptySet;
+    } else {
+			return field.get(loc);
+		}
 	}
 
 	public boolean attack(String Name) {
 		//update gameOver
+		Location pacLoc = locations.get("pacman");
+		Location ghostLoc = locations.get(Name);
+		
+		if (pacLoc != null && ghostLoc != null) {
+			if (Math.abs(pacLoc.x - ghostLoc.x) <= 1
+			&& Math.abs(pacLoc.y - ghostLoc.y) <= 1) {
+				return gameOver = true;
+			}
+		}
+		
 		return false;
 	}
 	
 	public JComponent eatCookie(String name) {
 		//update locations, components, field, and cookies
 		//the id for a cookie at (10, 1) is tok_x10_y1
+		
+		if (locations.containsKey(name) && components.containsKey(name)) {
+			Location cookieLoc = locations.get(name);
+			
+			if (field.get(cookieLoc).contains(Type.COOKIE)) {
+				JComponent cookie = components.get(name);
+				
+				locations.remove(cookieLoc);
+				components.remove(cookie);
+				field.get(cookieLoc).remove(Type.COOKIE);
+				cookies++;
+				
+				return cookie;
+			}
+		}
+		
 		return null;
 	}
 }
