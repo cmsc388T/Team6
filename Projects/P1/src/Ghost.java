@@ -1,5 +1,5 @@
 import java.util.HashSet;
-
+import java.util.Map;
 import java.util.ArrayList;
 
 public class Ghost{
@@ -23,6 +23,7 @@ public class Ghost{
 		if(moves != null && !moves.isEmpty()) {
 			// Random move from list
 			myLoc = moves.get((int)(Math.random() * moves.size()));
+			myMap.move(myName, myLoc, Map.Type.GHOST);
 			return true;
 		} else {
 			// Ghost cannot move
