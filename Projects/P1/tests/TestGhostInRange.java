@@ -17,6 +17,8 @@ public class TestGhostInRange extends TestCase {
 		pacman.myLoc.y = 6;
 		ghost.myLoc.x = 6;
 		ghost.myLoc.y = 5;
+		frame.getMap().move("pacman", pacman.myLoc, Map.Type.PACMAN);
+		frame.getMap().move("clyde", ghost.myLoc, Map.Type.GHOST);
 		assertTrue(ghost.is_pacman_in_range());
 		
 		// Horizontal
@@ -24,6 +26,8 @@ public class TestGhostInRange extends TestCase {
 		pacman.myLoc.y = 6;
 		ghost.myLoc.x = 5;
 		ghost.myLoc.y = 6;
+		frame.getMap().move("pacman", pacman.myLoc, Map.Type.PACMAN);
+		frame.getMap().move("clyde", ghost.myLoc, Map.Type.GHOST);
 		assertTrue(ghost.is_pacman_in_range());
 		
 		// Diagonal
@@ -31,6 +35,8 @@ public class TestGhostInRange extends TestCase {
 		pacman.myLoc.y = 6;
 		ghost.myLoc.x = 5;
 		ghost.myLoc.y = 5;
+		frame.getMap().move("pacman", pacman.myLoc, Map.Type.PACMAN);
+		frame.getMap().move("clyde", ghost.myLoc, Map.Type.GHOST);
 		assertTrue(ghost.is_pacman_in_range());
 	}
 }
