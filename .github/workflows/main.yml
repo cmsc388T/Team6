@@ -28,3 +28,62 @@ jobs:
       - name: Compile test files
         working-directory: Projects/P1
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" tests/*.java
+
+ test-pacman-move:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          javac -version
+          java -version
+      - name: Compile files for test
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManMove.java
+
+      - name: Run test
+        working-directory: Projects/P1
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
+
+         
+  test-ghost-move:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          javac -version
+          java -version
+      - name: Compile files for test
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostMove.java
+
+      - name: Run test
+        working-directory: Projects/P1
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostMove
+
+
+  test-map-move:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          javac -version
+          java -version
+      - name: Compile files for test
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapMove.java
+
+      - name: Run test
+        working-directory: Projects/P1
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove
