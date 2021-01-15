@@ -52,10 +52,10 @@ public class Ghost{
 			// Random move from list
 			myLoc = moves.get((int)(Math.random() * moves.size()));
 			myMap.move(myName, myLoc, Map.Type.GHOST);
-			return true;
+			return false;
 		} else {
 			// Ghost cannot move
-			return false;
+			return true;
 		}
 	}
 
