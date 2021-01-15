@@ -61,10 +61,10 @@ public class Map{
 			JComponent component = components.get(name);
 			Location location = locations.get(name);
 			if(component != null && location != null && loc != null && type != null) {
-				// remove type from old location
+				// remove type and name from types and locations
 				HashSet<Type> types = field.get(location);
 				if(types != null) {
-					types.remove(type);
+
 				}
 				locations.remove(name);
 				// move the component
