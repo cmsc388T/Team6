@@ -63,7 +63,10 @@ public class Map{
 			if(component != null && location != null && loc != null && type != null) {
 				// remove type and name from types and locations
 				HashSet<Type> types = field.get(location);
-				
+				if(types != null) {
+
+				}
+				locations.remove(name);
 				// move the component
 				component.setLocation(loc.x, loc.y);
 				// add type to new location
