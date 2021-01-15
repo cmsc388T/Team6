@@ -28,3 +28,60 @@ jobs:
       - name: Compile test files
         working-directory: Projects/P1
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" tests/*.java
+
+test-pacman-valid-moves:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          javac -version
+          java -version
+      - name: Compile files for test
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManValidMoves.java
+
+      - name: Run test
+        working-directory: Projects/P1
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
+
+test-ghost-valid-moves:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          javac -version
+          java -version
+      - name: Compile files for test
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostValidMoves.java
+
+      - name: Run test
+        working-directory: Projects/P1
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
+
+test-map-getloc:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          javac -version
+          java -version
+      - name: Compile files for test
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapGetLoc.java
+
+      - name: Run test
+        working-directory: Projects/P1
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
