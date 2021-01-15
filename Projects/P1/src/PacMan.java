@@ -77,6 +77,6 @@ public class PacMan{
 	}
 
 	public JComponent consume() {
-		return myMap.eatCookie("tok_x" + myLoc.x + "_y" + myLoc.y);
+		return myMap.getCookies() > 0 ? myMap.eatCookie("tok_x" + myLoc.x + "_y" + myLoc.y) : null;
 	}
 }

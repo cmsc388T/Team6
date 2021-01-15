@@ -125,6 +125,6 @@ public class Map{
 			}
 		}
 		
-		return null;
+		return new CookieComponent(-1, -1, 1);
 	}
 }
