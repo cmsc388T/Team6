@@ -2,9 +2,9 @@ name: CI-Pacman
 
 on:
   push:
-    branches: [ main, FTR-actions ]
+    branches: [ main, FTR-actions, FTR-sabotage, FTR-fix ]
   pull_request:
-    branches: [ main, FTR-actions ]
+    branches: [ main, FTR-actions, FTR-sabotage, FTR-fix ]
 
   workflow_dispatch:
 
@@ -85,3 +85,63 @@ jobs:
         - name: Run test
           working-directory: Projects/P1
           run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
+
+  test-pacman-consume:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          javac -version
+          java -version
+
+      - name: Compile files for test
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestConsume.java
+
+      - name: Run test
+        working-directory: Projects/P1
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestConsume
+
+  test-ghost-attack:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          javac -version
+          java -version
+
+      - name: Compile files for test
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestAttack.java
+
+      - name: Run test
+        working-directory: Projects/P1
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestAttack
+
+  test-map-eatcookie:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          javac -version
+          java -version
+
+      - name: Compile files for test
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapEatCookie.java
+
+      - name: Run test
+        working-directory: Projects/P1
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
