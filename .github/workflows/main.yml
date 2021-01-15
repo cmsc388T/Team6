@@ -28,7 +28,7 @@ jobs:
       - name: Compile test files
         working-directory: Projects/P1
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" tests/*.java
-        
+
   test-pacman-valid-moves:
       runs-on: ubuntu-latest
       container:
@@ -86,7 +86,7 @@ jobs:
           working-directory: Projects/P1
           run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
 
-  test-pacman-consume:
+  TestPacManInRange:
     runs-on: ubuntu-latest
     container:
       image: openjdk
@@ -97,7 +97,27 @@ jobs:
         run: |
           javac -version
           java -version
+      - name: Compile test files
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManInRange.java
 
+      - name: Run test file
+        working-directory: Projects/P1
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManInRange
+        
+  
+
+  test-pacman-consume:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Info
+        run: |
+          javac -version
+          java -version
       - name: Compile files for test
         working-directory: Projects/P1
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestConsume.java
@@ -106,7 +126,8 @@ jobs:
         working-directory: Projects/P1
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestConsume
 
-  test-ghost-attack:
+ 
+  TestGhostInRange:
     runs-on: ubuntu-latest
     container:
       image: openjdk
@@ -117,7 +138,27 @@ jobs:
         run: |
           javac -version
           java -version
+      - name: Compile test files
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostInRange.java
 
+      - name: Run test file
+        working-directory: Projects/P1
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
+        
+  
+
+  test-ghost-attack:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Info
+        run: |
+          javac -version
+          java -version
       - name: Compile files for test
         working-directory: Projects/P1
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestAttack.java
@@ -126,7 +167,9 @@ jobs:
         working-directory: Projects/P1
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestAttack
 
-  test-map-eatcookie:
+  
+
+  TestMapAttack:
     runs-on: ubuntu-latest
     container:
       image: openjdk
@@ -137,7 +180,26 @@ jobs:
         run: |
           javac -version
           java -version
+      - name: Compile test files
+        working-directory: Projects/P1
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapAttack.java
 
+      - name: Run test file
+        working-directory: Projects/P1
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapAttack
+
+
+  test-map-eatcookie:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Info
+        run: |
+          javac -version
+          java -version
       - name: Compile files for test
         working-directory: Projects/P1
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapEatCookie.java
@@ -145,3 +207,5 @@ jobs:
       - name: Run test
         working-directory: Projects/P1
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
+
+
