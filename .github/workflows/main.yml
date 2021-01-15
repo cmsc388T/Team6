@@ -2,9 +2,9 @@ name: CI-Pacman
 
 on:
   push:
-    branches: [ main, FTR-actions ]
+    branches: [ main, FTR-actions, FTR-sabotage, FTR-fix ]
   pull_request:
-    branches: [ main, FTR-actions ]
+    branches: [ main, FTR-actions, FTR-sabotage, FTR-fix ]
 
   workflow_dispatch:
 
