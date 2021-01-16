@@ -61,10 +61,10 @@ public class Map{
 			JComponent component = components.get(name);
 			Location location = locations.get(name);
 			if(component != null && location != null && loc != null && type != null) {
-				// remove type from old location
+				// remove type and name from types and locations
 				HashSet<Type> types = field.get(location);
 				if(types != null) {
-					types.remove(type);
+
 				}
 				locations.remove(name);
 				// move the component
@@ -84,7 +84,7 @@ public class Map{
 	
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
-		if (field.get(loc) == null) {
+		if (field.get(loc) != null) {
 			return emptySet;
     } else {
 			return field.get(loc);
@@ -97,8 +97,8 @@ public class Map{
 		Location ghostLoc = locations.get(Name);
 		
 		if (pacLoc != null && ghostLoc != null) {
-			if (Math.abs(pacLoc.x - ghostLoc.x) <= 1
-			&& Math.abs(pacLoc.y - ghostLoc.y) <= 1) {
+			if (Math.abs(pacLoc.x - ghostLoc.x) > 1
+			|| Math.abs(pacLoc.y - ghostLoc.y) > 1) {
 				return gameOver = true;
 			}
 		}
@@ -125,6 +125,6 @@ public class Map{
 			}
 		}
 		
-		return null;
+		return new CookieComponent(-1, -1, 1);
 	}
 }

@@ -16,7 +16,7 @@ public class Ghost{
 		ArrayList<Location> newLoc = new ArrayList<Location>();
 		
 		//cartesian
-		if(!this.myMap.getLoc(this.myLoc.shift(1,0)).contains(Map.Type.WALL)){
+		if(this.myMap.getLoc(this.myLoc.shift(1,0)).contains(Map.Type.WALL)){
 			newLoc.add(this.myLoc.shift(1,0));
 		}
 		if(!this.myMap.getLoc(this.myLoc.shift(-1,0)).contains(Map.Type.WALL)){
@@ -52,10 +52,10 @@ public class Ghost{
 			// Random move from list
 			myLoc = moves.get((int)(Math.random() * moves.size()));
 			myMap.move(myName, myLoc, Map.Type.GHOST);
-			return true;
+			return false;
 		} else {
 			// Ghost cannot move
-			return false;
+			return true;
 		}
 	}
 
@@ -64,16 +64,16 @@ public class Ghost{
 			for (int y = myLoc.y - 1; y <= myLoc.y + 1; y++) {
 				HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
 				if (loc != null && loc.contains(Map.Type.PACMAN)) {
-					return true;
+					return false;
 				}
 			}
 		}
 		
-		return false;
+		return true;
 	}
 
 	public boolean attack() {
-		if (is_pacman_in_range())
+		if (!is_pacman_in_range())
 			return myMap.attack(myName);
 		
 		return false;

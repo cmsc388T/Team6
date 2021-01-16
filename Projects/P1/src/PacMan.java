@@ -19,7 +19,7 @@ public class PacMan{
 		ArrayList<Location> newLoc = new ArrayList<Location>();
 		
 		//cartesian
-		if(!this.myMap.getLoc(this.myLoc.shift(1,0)).contains(Map.Type.WALL)){
+		if(this.myMap.getLoc(this.myLoc.shift(1,0)).contains(Map.Type.WALL)){
 			newLoc.add(this.myLoc.shift(1,0));
 		}
 		if(!this.myMap.getLoc(this.myLoc.shift(-1,0)).contains(Map.Type.WALL)){
@@ -56,11 +56,10 @@ public class PacMan{
 			// Pick random for fun
 			myLoc = moves.get((int)(Math.random() * moves.size()));
 			myMap.move(myName, myLoc, Map.Type.PACMAN);
-      
-			return true;
+			return false;
 		} else {
 			// Pacman cannot move!
-			return false;
+			return true;
 		}
 	}
 
@@ -68,7 +67,7 @@ public class PacMan{
 		for (int x = myLoc.x - 1; x <= myLoc.x + 1; x++) {
 			for (int y = myLoc.y - 1; y <= myLoc.y + 1; y++) {
 				HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
-				if (loc != null && loc.contains(Map.Type.GHOST)) {
+				if (loc != null && loc.contains(Map.Type.PACMAN)) {
 					return true;
 				}
 			}
@@ -78,6 +77,6 @@ public class PacMan{
 	}
 
 	public JComponent consume() {
-		return myMap.eatCookie("tok_x" + myLoc.x + "_y" + myLoc.y);
+		return myMap.getCookies() > 0 ? myMap.eatCookie("tok_x" + myLoc.x + "_y" + myLoc.y) : null;
 	}
 }
