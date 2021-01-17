@@ -58,19 +58,22 @@ public class Map{
 
 		// find associated component
 		if(name != null) {
+			/* curr component */
 			JComponent component = components.get(name);
+			/* current loc */
 			Location location = locations.get(name);
+			
 			if(component != null && location != null && loc != null && type != null) {
 				// remove type and name from types and locations
 				HashSet<Type> types = field.get(location);
 				if(types != null) {
-
+					field.get(location).remove(type);
 				}
-				locations.remove(name);
 				// move the component
 				component.setLocation(loc.x, loc.y);
 				// add type to new location
 				locations.put(name, loc);
+				
 				types = field.get(loc);
 				if(types != null) {
 					types.add(type);
@@ -85,9 +88,9 @@ public class Map{
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
 		if (field.get(loc) != null) {
-			return emptySet;
-    } else {
 			return field.get(loc);
+    } else {
+    	return emptySet;
 		}
 	}
 
