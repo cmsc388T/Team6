@@ -56,10 +56,10 @@ public class PacMan{
 			// Pick random for fun
 			myLoc = moves.get((int)(Math.random() * moves.size()));
 			myMap.move(myName, myLoc, Map.Type.PACMAN);
-			return false;
+			return tue;
 		} else {
 			// Pacman cannot move!
-			return true;
+			return false;
 		}
 	}
 
