@@ -16,7 +16,7 @@ public class Ghost{
 		ArrayList<Location> newLoc = new ArrayList<Location>();
 		
 		//cartesian
-		if(this.myMap.getLoc(this.myLoc.shift(1,0)).contains(Map.Type.WALL)){
+		if(!this.myMap.getLoc(this.myLoc.shift(1,0)).contains(Map.Type.WALL)){
 			newLoc.add(this.myLoc.shift(1,0));
 		}
 		if(!this.myMap.getLoc(this.myLoc.shift(-1,0)).contains(Map.Type.WALL)){
@@ -52,10 +52,10 @@ public class Ghost{
 			// Random move from list
 			myLoc = moves.get((int)(Math.random() * moves.size()));
 			myMap.move(myName, myLoc, Map.Type.GHOST);
-			return false;
+			return true;
 		} else {
 			// Ghost cannot move
-			return true;
+			return false;
 		}
 	}
 
