@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 
-public class PacMan{
+public class PacMan {
 	String myName;
 	Location myLoc;
 	Map myMap;
@@ -15,35 +15,35 @@ public class PacMan{
 	}
 
 	public ArrayList<Location> get_valid_moves() {
-    
+
 		ArrayList<Location> newLoc = new ArrayList<Location>();
-		
-		//cartesian
-		if(!this.myMap.getLoc(this.myLoc.shift(1,0)).contains(Map.Type.WALL)){
-			newLoc.add(this.myLoc.shift(1,0));
+
+		// cartesian
+		if (!this.myMap.getLoc(this.myLoc.shift(1, 0)).contains(Map.Type.WALL)) {
+			newLoc.add(this.myLoc.shift(1, 0));
 		}
-		if(!this.myMap.getLoc(this.myLoc.shift(-1,0)).contains(Map.Type.WALL)){
-			newLoc.add(this.myLoc.shift(-1,0));
+		if (!this.myMap.getLoc(this.myLoc.shift(-1, 0)).contains(Map.Type.WALL)) {
+			newLoc.add(this.myLoc.shift(-1, 0));
 		}
-		if(!this.myMap.getLoc(this.myLoc.shift(0,1)).contains(Map.Type.WALL)){
-			newLoc.add(this.myLoc.shift(0,1));
+		if (!this.myMap.getLoc(this.myLoc.shift(0, 1)).contains(Map.Type.WALL)) {
+			newLoc.add(this.myLoc.shift(0, 1));
 		}
-		if(!this.myMap.getLoc(this.myLoc.shift(0,-1)).contains(Map.Type.WALL)){
-			newLoc.add(this.myLoc.shift(0,-1));
+		if (!this.myMap.getLoc(this.myLoc.shift(0, -1)).contains(Map.Type.WALL)) {
+			newLoc.add(this.myLoc.shift(0, -1));
 		}
 
-		//diagonal
-		if(!this.myMap.getLoc(this.myLoc.shift(1,1)).contains(Map.Type.WALL)){
-			newLoc.add(this.myLoc.shift(1,1));
+		// diagonal
+		if (!this.myMap.getLoc(this.myLoc.shift(1, 1)).contains(Map.Type.WALL)) {
+			newLoc.add(this.myLoc.shift(1, 1));
 		}
-		if(!this.myMap.getLoc(this.myLoc.shift(-1,-1)).contains(Map.Type.WALL)){
-			newLoc.add(this.myLoc.shift(-1,-1));
+		if (!this.myMap.getLoc(this.myLoc.shift(-1, -1)).contains(Map.Type.WALL)) {
+			newLoc.add(this.myLoc.shift(-1, -1));
 		}
-		if(!this.myMap.getLoc(this.myLoc.shift(-1,1)).contains(Map.Type.WALL)){
-			newLoc.add(this.myLoc.shift(-1,1));
+		if (!this.myMap.getLoc(this.myLoc.shift(-1, 1)).contains(Map.Type.WALL)) {
+			newLoc.add(this.myLoc.shift(-1, 1));
 		}
-		if(!this.myMap.getLoc(this.myLoc.shift(1,-1)).contains(Map.Type.WALL)){
-			newLoc.add(this.myLoc.shift(1,-1));
+		if (!this.myMap.getLoc(this.myLoc.shift(1, -1)).contains(Map.Type.WALL)) {
+			newLoc.add(this.myLoc.shift(1, -1));
 		}
 
 		return newLoc;
@@ -52,9 +52,9 @@ public class PacMan{
 	public boolean move() {
 		ArrayList<Location> moves = get_valid_moves();
 		// Check for at least a single valid move
-		if(moves != null && !moves.isEmpty()) {
+		if (moves != null && !moves.isEmpty()) {
 			// Pick random for fun
-			myLoc = moves.get((int)(Math.random() * moves.size()));
+			myLoc = moves.get((int) (Math.random() * moves.size()));
 			myMap.move(myName, myLoc, Map.Type.PACMAN);
 			return true;
 		} else {
@@ -72,11 +72,11 @@ public class PacMan{
 				}
 			}
 		}
-    
+
 		return false;
 	}
 
 	public JComponent consume() {
-		return myMap.getCookies() > 0 ? myMap.eatCookie("tok_x" + myLoc.x + "_y" + myLoc.y) : null;
+		return myMap.eatCookie("tok_x" + myLoc.x + "_y" + myLoc.y);
 	}
 }
