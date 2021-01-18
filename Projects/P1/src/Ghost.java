@@ -64,12 +64,12 @@ public class Ghost{
 			for (int y = myLoc.y - 1; y <= myLoc.y + 1; y++) {
 				HashSet<Map.Type> loc = myMap.getLoc(new Location(x, y));
 				if (loc != null && loc.contains(Map.Type.PACMAN)) {
-					return false;
+					return true;
 				}
 			}
 		}
 		
-		return true;
+		return false;
 	}
 
 	public boolean attack() {
